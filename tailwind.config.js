@@ -8,6 +8,8 @@ export default {
   },
   plugins: [daisyui],
   daisyui: {
-    styled: true
-  }
+    styled: true,
+    themes: true,
+    darkTheme: 'nord',
+  },
 }
