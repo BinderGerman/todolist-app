@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { TaskCreator } from './components/TaskCreator'
 import { TaskTable } from './components/TaskTable'
 import { VisibilityControl } from './components/VisibilityControl'
+import { Navbar } from './components/semanticComponent/Navbar'
+import './styles/beer.scss'
 
 function App() {
   const [tasksItems, setTaskItems] = useState([])
@@ -39,23 +41,36 @@ function App() {
   }, [tasksItems])
 
   return (
-    <div className='w-screen h-screen flex justify-center items-center flex-col'>
-      <TaskCreator createNewTask={createNewTask} />
-      <TaskTable tasks={tasksItems} toggleTask={toggleTask} />
-      <VisibilityControl
-        isChecked={showCompleted}
-        setShowCompleted={checked => setShowCompleted(checked)}
-        cleanTasks={cleanTasks}
-      />
+    <>
+      <Navbar />
+      <main className='flex flex-col items-center justify-around h-screen p-4 sm:flex-row flex-wrap'>
+        <div className='card w-96 bg-base-100 shadow-xl h-2/3 mb-4 p-4'>
+          <TaskCreator createNewTask={createNewTask} />
+          <TaskTable tasks={tasksItems} toggleTask={toggleTask} />
+        </div>
+        <div className='beer-animation-wrapper flex justify-center items-center card w-96 shadow-xl h-2/3 mb-4'>
+          <div className='beer'>
+            <div className='liquid'></div>
+            <div className='foam'></div>
+          </div>
+        </div>
+        <div className='card w-96 bg-base-100 shadow-xl h-2/3 mb-4 p-4'>
+          <VisibilityControl
+            isChecked={showCompleted}
+            setShowCompleted={checked => setShowCompleted(checked)}
+            cleanTasks={cleanTasks}
+          />
 
-      {showCompleted === true && (
-        <TaskTable
-          tasks={tasksItems}
-          toggleTask={toggleTask}
-          showCompleted={showCompleted}
-        />
-      )}
-    </div>
+          {showCompleted === true && (
+            <TaskTable
+              tasks={tasksItems}
+              toggleTask={toggleTask}
+              showCompleted={showCompleted}
+            />
+          )}
+        </div>
+      </main>
+    </>
   )
 }
 

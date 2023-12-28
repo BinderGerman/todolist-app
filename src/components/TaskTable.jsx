@@ -10,11 +10,11 @@ export const TaskTable = ({ tasks, toggleTask, showCompleted = false }) => {
   }
 
   return (
-    <div className='overflow-x-auto w-full max-w-xs mb-5'>
-      <table className='table'>
+    <div className='overflow-x-auto'>
+      <table className='table table-zebra'>
         <thead>
           <tr>
-            <th className='text-base text-center'>Tasks</th>
+            <th className='font-bold text-center'>Tasks</th>
           </tr>
         </thead>
         <tbody>{taskTableRows(showCompleted)}</tbody>
