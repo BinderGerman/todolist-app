@@ -10,6 +10,6 @@ export default {
   daisyui: {
     styled: true,
     themes: true,
-    darkTheme: 'nord',
+    darkTheme: 'dim',
   },
 }
