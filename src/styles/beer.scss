@@ -1,0 +1,342 @@
+$beerL: #ffc200;
+$beerD: #fdac10;
+$foam: #fff9de;
+$mug: #f1ecdb;
+$size-anim: 250px;
+$size-single-div: 250px;
+
+.beer-animation-wrapper {
+  position: relative;
+  overflow-y: hidden;
+  padding: $size-anim * 0.17;
+  padding-right: 0;
+
+  .beer {
+    position: relative;
+    height: $size-anim;
+    width: $size-anim * 0.75;
+    min-width: $size-anim * 0.75;
+    margin-top: $size-anim * 0.32;
+    margin-right: $size-anim * 0.27;
+    margin-left: $size-anim * 0.09;
+    z-index: -2;
+    border-radius: 0 0 15% 15%;
+    /*mug*/
+    border: ($size-anim * 0.06) solid $mug;
+    box-sizing: border-box;
+    &:before {
+      content: '';
+      position: absolute;
+      height: 130%;
+      width: 100%;
+      bottom: -5%;
+      z-index: 1;
+      opacity: 0;
+      animation: 3s 3s bubbles linear infinite;
+      background:
+      /*bubbles*/ radial-gradient(
+          ($size-anim * 0.06) ($size-anim * 0.06) at 25% 85%,
+          lighten($beerL, 20%) 80%,
+          transparent 80%
+        ),
+        radial-gradient(
+          ($size-anim * 0.04) ($size-anim * 0.04) at 70% 45%,
+          lighten($beerD, 20%) 80%,
+          transparent 80%
+        ),
+        radial-gradient(
+          ($size-anim * 0.05) ($size-anim * 0.05) at 35% 40%,
+          lighten($beerD, 20%) 80%,
+          transparent 80%
+        ),
+        radial-gradient(
+          ($size-anim * 0.03) ($size-anim * 0.03) at 80% 30%,
+          lighten($beerD, 20%) 80%,
+          transparent 80%
+        ),
+        radial-gradient(
+          ($size-anim * 0.04) ($size-anim * 0.04) at 60% 81%,
+          lighten($beerD, 20%) 80%,
+          transparent 80%
+        ),
+        radial-gradient(
+          ($size-anim * 0.03) ($size-anim * 0.03) at 89% 89%,
+          lighten($beerD, 20%) 80%,
+          transparent 80%
+        ),
+        radial-gradient(
+          ($size-anim * 0.05) ($size-anim * 0.05) at 77% 78%,
+          lighten($beerD, 20%) 80%,
+          transparent 80%
+        ),
+        radial-gradient(
+          ($size-anim * 0.03) ($size-anim * 0.03) at 40% 57%,
+          lighten($beerL, 20%) 80%,
+          transparent 80%
+        ),
+        radial-gradient(
+          ($size-anim * 0.02) ($size-anim * 0.02) at 30% 67%,
+          lighten($beerL, 20%) 80%,
+          transparent 80%
+        ),
+        radial-gradient(
+          ($size-anim * 0.02) ($size-anim * 0.02) at 30% 17%,
+          lighten($beerL, 20%) 80%,
+          transparent 80%
+        ),
+        radial-gradient(
+          ($size-anim * 0.03) ($size-anim * 0.03) at 40% 10%,
+          lighten($beerL, 20%) 80%,
+          transparent 80%
+        ),
+        radial-gradient(
+          ($size-anim * 0.05) ($size-anim * 0.05) at 62% 24%,
+          lighten($beerL, 20%) 80%,
+          transparent 80%
+        ),
+        radial-gradient(
+          ($size-anim * 0.04) ($size-anim * 0.04) at 18% 31%,
+          lighten($beerL, 20%) 80%,
+          transparent 80%
+        ),
+        radial-gradient(
+          ($size-anim * 0.06) ($size-anim * 0.06) at 83% 60%,
+          lighten($beerL, 20%) 80%,
+          transparent 80%
+        );
+    }
+    &:after {
+      /*mug handle*/
+      content: '';
+      position: absolute;
+      border-radius: 0 50% 50% 0;
+      height: ($size-anim * 0.5);
+      width: ($size-anim * 0.33);
+      top: ($size-anim * 0.15);
+      right: ($size-anim * -0.33);
+      background-color: transparent;
+      box-sizing: border-box;
+      border: ($size-anim * 0.08) solid $mug;
+      border-left: ($size-anim * 0.06) solid $mug;
+    }
+  }
+  .liquid {
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    position: absolute;
+    background-image:     
+      /*bottom of mug*/
+      radial-gradient(
+        ($size-anim * 0.65) ($size-anim * 0.15) at 50% 103%,
+        $mug 40%,
+        transparent 40%
+      ),
+      /*beer*/ linear-gradient(to right, $beerL 50%, $beerD 50%);
+    animation: liquidFillUp 2s ease-out forwards;
+  }
+  .foam {
+    position: relative;
+    top: -20%;
+    left: 63%;
+    height: ($size-anim * 0.1);
+    width: ($size-anim * 0.1);
+    background: lighten($foam, 5%);
+    border-radius: ($size-anim * 0.17);
+    z-index: 1;
+    opacity: 0;
+    animation: foamShow 1s 2s ease-out forwards;
+    box-shadow:
+      /*reflection*/
+      ($size-anim * -0.35) ($size-anim * 0.28) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.29) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.3) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.31) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.32) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.33) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.34) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.35) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.36) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.37) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.38) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.39) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.4) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.41) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.42) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.43) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.44) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.45) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.46) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.47) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.48) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.49) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.5) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.51) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.52) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.53) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.54) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.55) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.56) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.57) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.58) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.59) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.6) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.61) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.62) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.63) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.64) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.65) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.66) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.67) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.68) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.69) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.7) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.71) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.72) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      ($size-anim * -0.35) ($size-anim * 0.73) 0 ($size-anim * -0.015)
+        lighten($beerL, 30%),
+      /*foam*/ 0 ($size-anim * 0.11) 0 ($size-anim * 0.07) $foam,
+      0 ($size-anim * 0.07) 0 ($size-anim * 0.07) lighten($foam, 5%),
+      ($size-anim * -0.27) ($size-anim * 0.07) 0 ($size-anim * 0.04) $foam,
+      ($size-anim * -0.39) ($size-anim * 0.06) 0 ($size-anim * 0.06)
+        lighten($foam, 5%),
+      ($size-anim * -0.18) ($size-anim * 0.12) 0 ($size-anim * 0.04) $foam,
+      ($size-anim * -0.5) ($size-anim * 0.08) 0 ($size-anim * 0.04) $foam,
+      ($size-anim * -0.15) 0 0 ($size-anim * 0.06) lighten($foam, 5%),
+      ($size-anim * 0.14) ($size-anim * 0.07) 0 ($size-anim * 0.06)
+        lighten($foam, 5%),
+      ($size-anim * -0.32) ($size-anim * -0.08) 0 ($size-anim * 0.05)
+        lighten($foam, 5%),
+      ($size-anim * -0.18) ($size-anim * -0.14) 0 ($size-anim * 0.05) $foam,
+      ($size-anim * -0.05) ($size-anim * -0.07) 0 ($size-anim * 0.05) $foam,
+      ($size-anim * 0.07) ($size-anim * -0.05) 0 ($size-anim * 0.01)
+        lighten($foam, 5%),
+      ($size-anim * 0.09) ($size-anim * -0.07) 0 ($size-anim * 0.01) $foam,
+      ($size-anim * 0.25) ($size-anim * 0.07) 0 ($size-anim * 0.01) $foam;
+    &:before,
+    &:after {
+      z-index: -1;
+      content: '';
+      position: absolute;
+      top: 200%;
+      width: ($size-anim * 0.1);
+      border-radius: ($size-anim * 0.17);
+      background: $foam;
+      background: (
+        linear-gradient(to right, $foam 75%, lighten($foam, 5%) 75%)
+      );
+    }
+    &:after {
+      left: 100%;
+      height: ($size-anim * 0);
+      animation: drip1 2s 2s ease-out forwards;
+    }
+    &:before {
+      right: 25%;
+      height: ($size-anim * 0);
+      animation: drip2 5s 2s ease-out forwards;
+    }
+  }
+}
+
+@keyframes drip2 {
+  0% {
+    height: ($size-anim * 0);
+  }
+  50% {
+    height: ($size-anim * 0.3);
+  }
+  75% {
+    height: ($size-anim * 0.3);
+  }
+  80% {
+    height: ($size-anim * 0.3);
+  }
+  100% {
+    height: ($size-anim * 0.35);
+  }
+}
+
+@keyframes drip1 {
+  0% {
+    height: ($size-anim * 0);
+  }
+  100% {
+    height: ($size-anim * 0.5);
+  }
+}
+
+@keyframes liquidFillUp {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+@keyframes foamShow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes bubbles {
+  0% {
+    transform: translatey(0%);
+  }
+  99% {
+    transform: translatey(-50%);
+  }
+  100% {
+    opacity: 1;
+  }
+}
