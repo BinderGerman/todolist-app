@@ -2,14 +2,14 @@
   "name": "todolist-app",
   "private": true,
   "version": "1.0.0",
-  "homepage": "https://bindergerman.github.io/todolist-app",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --base=/todolist-app/",
     "lint": "eslint . --ext js,jsx",
     "preview": "vite preview",
     "format": "prettier --write .",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
