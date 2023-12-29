@@ -2,7 +2,7 @@
   "name": "todolist-app",
   "private": true,
   "version": "1.0.0",
-  "homepage": "https://BinderGerman.github.io/todolist-app",
+  "homepage": "https://bindergerman.github.io/todolist-app",
   "type": "module",
   "scripts": {
     "dev": "vite",
